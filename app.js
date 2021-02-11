@@ -1,6 +1,8 @@
 //TO DO
-// BYT STYLING PÅ KLARADE TASKS OCH TA BORT STRÄCKET GENOM
-//LÄGG TILL EN DAILY TASKS / WEEKLY TASKS FUNKTION
+//EFFEKTIVISERA KODEN
+//LÄGG TILL ANIMATION NÄR MAN SKAPAR EN NY TODO
+
+//LÄGG TILL EN DAILY TASKS / WEEKLY TASKS 
 //LÄGG EVENTUELLT TILL ETT SCHEMA
 
 //DOCUMENT SELECTORS
@@ -10,14 +12,18 @@ const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
 
 //LISTENERS
-todoButton.addEventListener("click", addTodo);
+todoButton.addEventListener("click", (e)=>{
+    if(filterOption.value === "all")
+    {
+        addTodo();
+    }
+});
 todoList.addEventListener("click", deleteCheck);
-filterOption.addEventListener("click", filterTodo);
+filterOption.addEventListener("input", filterTodo);
+
 
 //FUNCTIONS
-function addTodo(event){
-    //DISABLE SUBMIT
-    event.preventDefault();
+function addTodo(){
     //CREATE DIV AND ADD CLASS TODO
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
@@ -34,7 +40,7 @@ function addTodo(event){
     //DELETE BUTTON
     const deleteButton = document.createElement('button');
     deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
-    deleteButton.classList.add("delete-btn"); //trash btn?
+    deleteButton.classList.add("delete-btn"); 
     todoDiv.appendChild(deleteButton);
     //APPEND TO LIST
     todoList.appendChild(todoDiv);
@@ -45,18 +51,18 @@ function addTodo(event){
 function deleteCheck(e){
     const item = e.target;
     //DELETE TODO
-    if(item.classList[0] == "delete-btn")
+    if(item.classList[0] === "delete-btn")
     {
-        const todo = item.parentElement; //FRÅGA SEBBE OM DEHÄR E BRA ELLER OM JA BORDE GÖRA SOM HONOM
-        //REMOVE ANIMATION
+        const todo = item.parentElement; 
+        //REMOVE AFTER ANIMATION
         todo.classList.add("removed");
-        todo.addEventListener("trasitionend", function(){
-            todo.remove();
+        todo.addEventListener("transitionend", function(){
+            todo.remove(); 
         });
     }
 
     //CHECK TODO
-    if(item.classList[0] === "complete-btn"){ //FRÅGA SEBBE VARFÖR MAN ANVÄNDER ===
+    if(item.classList[0] === "complete-btn"){ 
         const todo = item.parentElement;
         todo.classList.toggle("completed");
     }
