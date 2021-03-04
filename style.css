@@ -25,7 +25,6 @@ form {
 
 h1 {
   display: inline;
-  background-color: rgba(176, 107, 255, 0.712);
   padding: 0.5em 1em;
   box-decoration-break: clone;
 }
@@ -39,7 +38,7 @@ form button {
 }
 
 form button {
-  color: #a06dff;
+  color: #ff325e;
   background: white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -47,7 +46,7 @@ form button {
 
 form button:hover {
   color: white;
-  background: #a06dff;
+  background: #ff325e;
 }
 
 select {
@@ -56,7 +55,7 @@ select {
   appearance: none;
   outline: none;
   border: none;
-  color: #a06dff;
+  color: #ff325e;
   width: 10rem;
   cursor: pointer;
   padding: 1rem;
@@ -71,7 +70,7 @@ select {
 .select::after {
   content: "\25BC";
   position: absolute;
-  background: #a06dff;
+  background: #ff325e;
   top: 0;
   right: 0;
   padding: 1rem;
@@ -81,7 +80,7 @@ select {
 
 .select:hover::after {
   background: white;
-  color: #a06dff;
+  color: #ff325e;
 }
 
 .todo-container {
